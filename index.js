@@ -10,11 +10,11 @@ client.lights(app)
 function app(err, result) {
   var l = getNames(result)
   var m = [l.Left,l.Center,l.Right]
-  client.state(l.Left, {
-    hue: hue(0.8)
-  }, function(){
-    client.light(l.Left, log)
-  })
+  setHue(l.Left, 0.1)
+
+  function setHue(newHue, cb) {
+    client.state(l.Left, {hue:newHue}, cb)
+  }
 }
 
 function getNames(result) {
