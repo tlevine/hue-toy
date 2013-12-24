@@ -13,14 +13,18 @@ function app(err, result) {
   shuffle(0.4)
 
   function setHue(light, newHue, cb) {
-    client.state(light, {"hue":toHue(newHue)}, cb)
+    client.state(light, {
+      "hue":toHue(newHue),
+      "sat":50,
+      "bri":50,
+    }, cb)
   }
   function shuffle(i) {
     setHue(l.Left, (i + 0.1))
-    setHue(l.Center, (i + 0.3))
-    setHue(l.Right, (i + 0.5))
+    setHue(l.Center, (i + 0.2))
+    setHue(l.Right, (i + 0.3))
     console.log(i)
-    setTimeout(function(){shuffle(i + 0.15)}, 2 * 1000)
+    setTimeout(function(){shuffle(i + 0.25)}, 2 * 1000)
   }
 }
 
