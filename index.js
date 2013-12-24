@@ -10,21 +10,23 @@ client.lights(app)
 function app(err, result) {
   var l = getNames(result)
   var m = [l.Left,l.Center,l.Right]
-  shuffle(0.4)
+  chase(0.4)
 
   function setHue(light, newHue, cb) {
     client.state(light, {
       "hue":toHue(newHue),
-      "sat":50,
-      "bri":50,
+      "sat":100,
+      "bri":100
     }, cb)
   }
-  function shuffle(i) {
-    setHue(l.Left, (i + 0.1))
-    setHue(l.Center, (i + 0.2))
-    setHue(l.Right, (i + 0.3))
-    console.log(i)
-    setTimeout(function(){shuffle(i + 0.25)}, 2 * 1000)
+  function chase(i, inc) {
+    if (typeof(inc) === 'undefined') {
+      inc = 0.2
+    }
+    setHue(l.Left, (i + 1 * inc))
+    setHue(l.Center, (i + 2 * inc))
+    setHue(l.Right, (i + 3 * inc))
+    setTimeout(function(){chase(i + 0.25)}, 2 * 1000)
   }
 }
 
