@@ -10,7 +10,8 @@ client.lights(app)
 function app(err, result) {
   var l = getNames(result)
   var m = [l.Left,l.Center,l.Right]
-  console.log(toHex(82, 82, 23))
+  client.light(1, log)
+  toHex(82, 82, 23)
 }
 
 function getNames(result) {
@@ -26,4 +27,8 @@ function toHex(r,g,b) {
   function oneChannel(decimal) {
     return (decimal % 255).toString(16)
   }
+}
+
+function log(x,y) {
+  console.log(x,y)
 }
