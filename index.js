@@ -10,17 +10,17 @@ client.lights(app)
 function app(err, result) {
   var l = getNames(result)
   var m = [l.Left,l.Center,l.Right]
-  setInterval(shuffle, 2000)
+  shuffle(0.4)
 
   function setHue(light, newHue, cb) {
     client.state(light, {"hue":toHue(newHue)}, cb)
   }
-  function shuffle() {
-    var i = 0.4
+  function shuffle(i) {
     setHue(l.Left, (i + 0.1))
     setHue(l.Center, (i + 0.3))
     setHue(l.Right, (i + 0.5))
     console.log(i)
+    setTimeout(function(){shuffle(i + 0.15)}, 2 * 1000)
   }
 }
 
