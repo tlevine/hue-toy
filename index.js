@@ -10,10 +10,21 @@ client.lights(app)
 function app(err, result) {
   var l = getNames(result)
   var m = [l.Left,l.Center,l.Right]
-  setHue(l.Left, 0.1)
+  // setInterval(shuffle, 2000)
+  // shuffle()
+  setHue(l.Left, 0.3, log)
 
-  function setHue(newHue, cb) {
-    client.state(l.Left, {hue:newHue}, cb)
+  function setHue(light, newHue, cb) {
+    console.log(newHue)
+    console.log(toHue(newHue))
+    client.state(light, {"hue":toHue(newHue)}, cb)
+  }
+  function shuffle() {
+    var i = 0.4
+    setHue(l.Left, (i + 0.1))
+    setHue(l.Center, (i + 0.3))
+    setHue(l.Right, (i + 0.5))
+    console.log(i)
   }
 }
 
@@ -29,8 +40,6 @@ function log(x,y) {
   console.log(x,y)
 }
 
-console.log(hue(0.3))
-
-function hue(zero_to_one) {
+function toHue(zero_to_one) {
   return Math.round((zero_to_one % 1) * Math.pow(2, 16))
 }
