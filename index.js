@@ -23,10 +23,10 @@ function app(err, result) {
     if (typeof(inc) === 'undefined') {
       inc = 0.2
     }
-    setHue(l.Left, (i + 1 * inc))
-    setHue(l.Center, (i + 2 * inc))
-    setHue(l.Right, (i + 3 * inc))
-    setTimeout(function(){chase(i + 0.25)}, 2 * 1000)
+    setHue(1, (i + 1 * inc))
+    setHue(3, (i + 2 * inc))
+    setHue(2, (i + 3 * inc))
+    setTimeout(function(){chase(i + inc)}, 2 * 1000)
   }
 }
 

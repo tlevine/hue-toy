@@ -1,0 +1,24 @@
+{
+  "name": "hue-toy",
+  "version": "0.0.0",
+  "description": "A toy for the hue lights in the basement",
+  "main": "index.js",
+  "dependencies": {
+    "hue.js": "~0.2.13",
+    "hue-cli": "~0.0.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tlevine/hue-toy.git"
+  },
+  "author": "Thomas Levine <_@thomaslevine.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tlevine/hue-toy/issues"
+  },
+  "homepage": "https://github.com/tlevine/hue-toy"
+}
